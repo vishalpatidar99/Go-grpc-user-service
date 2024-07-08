@@ -5,15 +5,12 @@ import (
 	"log"
 	"net"
 
-	pb "github.com/vishalpatidar99/Go-grpc-user-servicce/protos/compiled"
+	pb "github.com/vishalpatidar99/Go-grpc-user-service/protos/compiled"
+	"github.com/vishalpatidar99/Go-grpc-user-service/services"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
-
-type server struct {
-	pb.UnimplementedUserServiceServer
-}
 
 func main() {
 	lis, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", 50051))
@@ -22,7 +19,7 @@ func main() {
 	}
 
 	s := grpc.NewServer()
-	pb.RegisterUserServiceServer(s, &server{})
+	pb.RegisterUserServiceServer(s, services.Server())
 	reflection.Register(s)
 
 	log.Printf("server is listening at %v", lis.Addr())
