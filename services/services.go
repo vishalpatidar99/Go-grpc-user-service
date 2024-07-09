@@ -6,7 +6,6 @@ import (
 
 	"github.com/vishalpatidar99/Go-grpc-user-service/models"
 	pb "github.com/vishalpatidar99/Go-grpc-user-service/protos/compiled"
-	"github.com/vishalpatidar99/Go-grpc-user-service/utils"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -27,7 +26,7 @@ func Server() *server {
 
 func (s *server) GetUserByID(ctx context.Context, req *pb.UserIDRequest) (*pb.UserResponse, error) {
 	log.Print("Get user by id service invoked, proceeding with request")
-	if err := utils.GetUserByIDValidation(req); err != nil {
+	if err := GetUserByIDValidation(req); err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, err.Error())
 	}
 
@@ -48,7 +47,7 @@ func (s *server) GetUserByID(ctx context.Context, req *pb.UserIDRequest) (*pb.Us
 
 func (s *server) GetUsersByIDs(ctx context.Context, req *pb.UserIDsRequest) (*pb.UsersResponse, error) {
 	log.Print("Get users by list of id service invoked, proceeding with request")
-	if err := utils.GetUsersByIDsValidation(req); err != nil {
+	if err := GetUsersByIDsValidation(req); err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, err.Error())
 	}
 
@@ -75,7 +74,7 @@ func (s *server) GetUsersByIDs(ctx context.Context, req *pb.UserIDsRequest) (*pb
 
 func (s *server) SearchUsers(ctx context.Context, req *pb.SearchRequest) (*pb.UsersResponse, error) {
 	log.Print("Search users service invoked, proceeding with request")
-	if err := utils.SearchUsersValidation(req); err != nil {
+	if err := SearchUsersValidation(req); err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, err.Error())
 	}
 
