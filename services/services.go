@@ -20,6 +20,14 @@ func Server() *server {
 		users: []models.User{
 			{ID: 1, FName: "Steve", City: "LA", Phone: 1234567890, Height: 5.8, Married: "true"},
 			{ID: 2, FName: "John", City: "NY", Phone: 9876543210, Height: 6.1, Married: "false"},
+			{ID: 3, FName: "Alice", City: "SF", Phone: 5551234567, Height: 5.5, Married: "false"},
+			{ID: 4, FName: "Bob", City: "LA", Phone: 4449876543, Height: 5.9, Married: "true"},
+			{ID: 5, FName: "Emily", City: "NY", Phone: 3335556789, Height: 5.7, Married: "false"},
+			{ID: 6, FName: "David", City: "SF", Phone: 2223334444, Height: 6.0, Married: "true"},
+			{ID: 7, FName: "Sarah", City: "LA", Phone: 1112223333, Height: 5.6, Married: "true"},
+			{ID: 8, FName: "Michael", City: "NY", Phone: 9998887777, Height: 6.2, Married: "false"},
+			{ID: 9, FName: "Jennifer", City: "SF", Phone: 8889990000, Height: 5.9, Married: "false"},
+			{ID: 10, FName: "Daniel", City: "LA", Phone: 7776665555, Height: 5.8, Married: "true"},
 		},
 	}
 }
