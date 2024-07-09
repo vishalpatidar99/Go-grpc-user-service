@@ -11,13 +11,21 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-// getUserByIDRequestBody := &pb.UserIDRequest{
-// 	Id: 1,
-// 	Fname
-// }
+var getUserByIDRequestBody = &pb.UserIDRequest{
+	Id: 1,
+}
+
+var getUsersByIDsRequestBody = &pb.UserIDsRequest{
+	Ids: []int32{1, 2, 3},
+}
+
+var searchUsersRequestBody = &pb.SearchRequest{
+	City:    "LA",
+	Married: "true",
+}
 
 func main() {
-	conn, err := grpc.NewClient("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.NewClient("127.0.0.1:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
@@ -28,21 +36,21 @@ func main() {
 	defer cancel()
 
 	// GetUserByID request
-	r1, err := c.GetUserByID(ctx, &pb.UserIDRequest{Id: 2})
+	r1, err := c.GetUserByID(ctx, getUserByIDRequestBody)
 	if err != nil {
 		log.Fatalf("could not get user: %v", err)
 	}
 	log.Printf("User: %v", r1)
 
 	// GetUsersByIDs request
-	r2, err := c.GetUsersByIDs(ctx, &pb.UserIDsRequest{Ids: []int32{2, 1, 3}})
+	r2, err := c.GetUsersByIDs(ctx, getUsersByIDsRequestBody)
 	if err != nil {
 		log.Fatalf("could not get users: %v", err)
 	}
 	log.Printf("Users: %v", r2.GetUsers())
 
 	// SearchUsers request
-	r3, err := c.SearchUsers(ctx, &pb.SearchRequest{City: "LA"})
+	r3, err := c.SearchUsers(ctx, searchUsersRequestBody)
 	if err != nil {
 		log.Fatalf("could not search users: %v", err)
 	}
