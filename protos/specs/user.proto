@@ -22,7 +22,7 @@ message SearchRequest {
     string city = 2;
     int64 phone = 3;
     float height = 4;
-    bool married = 5;
+    string married = 5;
 }
 
 message User {
@@ -31,7 +31,7 @@ message User {
     string city = 3;
     int64 phone = 4;
     float height = 5;
-    bool married = 6;
+    string married = 6;
 }
 
 message UserResponse {

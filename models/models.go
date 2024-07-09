@@ -6,5 +6,5 @@ type User struct {
 	City    string
 	Phone   int64
 	Height  float32
-	Married bool
+	Married string
 }
