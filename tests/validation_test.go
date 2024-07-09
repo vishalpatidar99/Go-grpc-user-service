@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	pb "github.com/vishalpatidar99/Go-grpc-user-service/protos/compiled"
-	"github.com/vishalpatidar99/Go-grpc-user-service/utils"
+	"github.com/vishalpatidar99/Go-grpc-user-service/services"
 )
 
 func TestGetUserByIDValidation(t *testing.T) {
@@ -34,7 +34,7 @@ func TestGetUserByIDValidation(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			err := utils.GetUserByIDValidation(tt.req)
+			err := services.GetUserByIDValidation(tt.req)
 			assert.Equal(t, tt.expected, err)
 		})
 	}
@@ -65,7 +65,7 @@ func TestGetUsersByIDsValidation(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			err := utils.GetUsersByIDsValidation(tt.req)
+			err := services.GetUsersByIDsValidation(tt.req)
 			assert.Equal(t, tt.expected, err)
 		})
 	}
@@ -101,7 +101,7 @@ func TestSearchUsersValidation(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			err := utils.SearchUsersValidation(tt.req)
+			err := services.SearchUsersValidation(tt.req)
 			assert.Equal(t, tt.expected, err)
 		})
 	}
