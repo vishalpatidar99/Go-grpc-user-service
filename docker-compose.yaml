@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  go-grpc-user-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "50051:50051"
+    environment:
+      - PORT=50051
+    volumes:
+      - .:/app
+    expose:
+      - 50051
